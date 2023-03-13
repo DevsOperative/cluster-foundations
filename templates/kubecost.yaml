@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubecost
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: kubecost
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    chart: {{ .Values.spec.source.kubecost.chart }}
+    repoURL: {{ .Values.spec.source.kubecost.repoURL }}
+    targetRevision: {{ .Values.spec.source.kubecost.targetRevision }}

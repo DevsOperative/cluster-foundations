@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    chart: {{ .Values.spec.source.prometheus.chart }}
+    repoURL: {{ .Values.spec.source.prometheus.repoURL }}
+    targetRevision: {{ .Values.spec.source.prometheus.targetRevision }}
