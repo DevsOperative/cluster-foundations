@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: nginx
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    chart: {{ .Values.spec.source.nginx.chart }}
+    repoURL: {{ .Values.spec.source.nginx.repoURL }}
+    targetRevision: {{ .Values.spec.source.nginx.targetRevision }}

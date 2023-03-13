@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: trivy-operator
+  namespace: argocd
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: trivy-system
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    chart: {{ .Values.spec.source.trivy.chart }}
+    repoURL: {{ .Values.spec.source.trivy.repoURL }}
+    targetRevision: {{ .Values.spec.source.trivy.targetRevision }}
