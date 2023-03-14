@@ -14,3 +14,6 @@ spec:
     chart: {{ .Values.spec.source.nginx.chart }}
     repoURL: {{ .Values.spec.source.nginx.repoURL }}
     targetRevision: {{ .Values.spec.source.nginx.targetRevision }}
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
