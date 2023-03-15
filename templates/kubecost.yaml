@@ -14,3 +14,9 @@ spec:
     chart: {{ .Values.spec.source.kubecost.chart }}
     repoURL: {{ .Values.spec.source.kubecost.repoURL }}
     targetRevision: {{ .Values.spec.source.kubecost.targetRevision }}
+  helm:
+    values: |
+      global.prometheus.enabled: false
+      clusterController.enabled: false
+      global.prometheus.fqdn: http://prometheus-stack-prometheus.monitoring.svc.cluster.local:9090
+      global.notifications.alertmanager.fqdn: http://prometheus-stack-alertmanager.monitoring.svc.cluster.local:9093

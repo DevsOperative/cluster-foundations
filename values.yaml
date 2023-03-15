@@ -4,7 +4,7 @@ spec:
   source:
     kubecost:
       repoURL: https://kubecost.github.io/cost-analyzer/
-      chart: kubecost/cost-analyzer
+      chart: cost-analyzer
       targetRevision: "1.101.1"
     nginx:
       repoURL: https://kubernetes.github.io/ingress-nginx
@@ -12,9 +12,13 @@ spec:
       targetRevision: "4.1.4"
     prometheus:
       repoURL: https://prometheus-community.github.io/helm-charts
-      chart: prometheus-community/kube-prometheus-stack
+      chart: kube-prometheus-stack
       targetRevision: "45.7.1"
     trivy:
       repoURL: https://aquasecurity.github.io/helm-charts/
-      chart: aqua/trivy-operator
+      chart: trivy-operator
       targetRevision: "0.12.1"
+    argocd:
+      repoURL: https://argoproj.github.io/argo-helm
+      chart: argo-cd
+      targetRevision: "5.26.1"
