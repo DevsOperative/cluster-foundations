@@ -7,9 +7,13 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
+    namespace: monitoring
     server: {{ .Values.spec.destination.server }}
   project: default
   source:
     chart: {{ .Values.spec.source.prometheus.chart }}
     repoURL: {{ .Values.spec.source.prometheus.repoURL }}
     targetRevision: {{ .Values.spec.source.prometheus.targetRevision }}
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
